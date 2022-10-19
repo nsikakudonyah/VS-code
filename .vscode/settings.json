@@ -1,4 +1,4 @@
 {
-    "html.format.wrapAttributes": "aligned-multiple",
+    "html.format.wrapAttributes": "force",
     "editor.fontLigatures": true
 }
