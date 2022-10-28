@@ -98,3 +98,9 @@ hr {
     color: #c9ccd3;
     border-top: 1px solid ;
 }
+
+@media only screen and (max-device-width: 480px) {
+    .share {
+        background: src
+    }
+    }
