@@ -1,0 +1,315 @@
+html {box-sizing: border-box;}
+*,
+*::before,
+*::after {box-sizing: inherit;}
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  color: var(--clr-white);
+  background-color: var(--bg-body);
+  line-height: 1.43;
+}
+
+/* Reset */
+h1, h2, p, figure {margin: 0;}
+img {max-width: 100%; display: block;}
+a {text-decoration: none; color: inherit;}
+
+/* Custom properties */
+:root {
+  --ff-crimson: 'Crimson Pro', serif;
+  --ff-lora: 'Lora', serif;
+  --ff-montserrat: 'Montserrat', sans-serif;
+  --clr-white: #fff;
+  --clr-yellow: #F8C34A;
+  --bg-body: #181719;
+  --bx-shadow-card: 0 .25em .25em hsl(0 0% 0%/.25);
+  --bd-radius: .3em;
+}
+/* Utility classes */
+.w-screen {
+  width: 93.6vw;
+  min-width: 21rem;
+  max-width: 30rem;
+  margin-inline: auto;
+}
+.ff-crimson {
+  font-family: var(--ff-crimson);
+}
+.ff-lora {
+  font-family: var(--ff-lora);
+}
+.ff-montserrat {
+  font-family: var(--ff-montserrat);
+}
+.fw-200 {
+  font-weight: 200;
+}
+.fw-400 {
+  font-weight: 400;
+}
+.fw-500 {
+  font-weight: 500;
+}
+.fw-700 {
+  font-weight: 700;
+}
+.tt-capitalize {
+  text-transform: capitalize;
+}
+.tt-uppercase {
+  text-transform: uppercase;
+}
+/*  */
+
+.header {
+  padding-block: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  padding: .6em .4em;
+  display: inline;
+  font-size: .875rem;
+  border: 1px solid var(--clr-white);
+  border-radius: var(--bd-radius);
+}
+.toggle {
+  display: inline-block;
+  width: 1.8rem;
+  height: 3px;
+  background-color: var(--clr-white);
+  position: relative;
+  border-radius: 3em;
+  cursor: pointer;
+  z-index: 20;
+}
+.toggle::before,
+.toggle::after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-color: var(--clr-white);
+  border-radius: inherit;
+}
+.toggle::before {
+  top: -8px;
+}
+.toggle::after {
+  top: 8px;
+}
+.toggle,
+.toggle::before,
+.toggle::after {
+  transition: top .3s ease-in-out, transform .3s ease-in-out, background-color .3s ease-in-out;
+}
+.toggle.animation {
+  background-color: transparent;
+}
+.toggle.animation::before {
+  top: 0;
+  transform: rotate(-45deg);
+}
+.toggle.animation::after {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.menu {
+  position: fixed;
+  inset: 0;
+  display: none;
+  justify-items: center;
+  align-content: center;
+  gap: 1.8em;
+  background-color: hsl(0 0% 0%/.8);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+.show-menu {
+  display: grid;
+}
+.menu--item {
+  position: relative;
+}
+
+.active {
+  font-weight: 700;
+  color: var(--clr-yellow);
+  border-bottom: 2px solid currentColor;
+}
+.main {
+  margin-top: 1em;
+}
+.main__hero {
+  max-width: 46.06rem;
+}
+.main__hero--img {
+  border-radius: var(--bd-radius);
+  overflow: hidden;
+}
+.main__text--title {
+  margin-bottom: .5em;
+  font-size: clamp(2.25rem, 1.08rem + 5vw, 3rem);
+}
+.main__text--copy {
+  margin-bottom: 1em;
+  max-width: 25ch;
+  font-size: clamp(.875rem, .5rem + 1.6vw, 1.5rem);
+}
+.cta {
+  position: relative;
+  font-size: clamp(.875rem, .5rem + 1.6vw, 1.125rem);
+  transition: color .3s ease;
+}
+.arrow {
+  margin-left: 1em;
+}
+.main__hero {
+  margin-top: 2.5em;
+  position: relative;
+}
+.card {
+  padding: 1em 1.2em 1.5em;
+  width: clamp(300px, 80%, 410px);
+  box-shadow: var(--bx-shadow-card);
+  background-color: var(--bg-body);
+  border-radius: var(--bd-radius);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translate(-5%, 62%);
+}
+.card__header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr 1fr;
+  column-gap: 1em;
+  align-items: end;
+}
+.card__header--photo {
+  grid-row: span 2;
+  max-width: 2.25rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px solid var(--clr-white);
+}
+.card__header--name {
+  font-size: clamp(.75rem, .4rem + 1.5vw, .875rem);
+}
+.card__header--position {
+  font-size: clamp(.625rem, .5rem + .54vw, .75rem);
+}
+.card__copy {
+  margin-top: .95em;
+  max-width: 17ch;
+  font-size: clamp(1.125rem, 1rem + .54vw, 1.5rem);
+}
+.footer {
+  margin-top: 10em;
+  padding-block: 1.5em;
+  font-size: clamp(.75rem, 3vw, .85rem);
+  text-align: center;
+}
+.footer--attribution {
+  position: relative;
+}
+.footer--attribution::after {
+  width: 100%;
+  height: 2px;
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  background-color: currentColor;
+  transition: transform .3s ease-in-out;
+}
+
+
+@media screen and (min-width: 64rem) {
+  .w-screen {
+    max-width: 80rem;
+  }
+  .toggle {
+    display: none;
+  }
+  .menu {
+    position: unset;
+    display: flex;
+    align-items: center;
+    background-color: inherit;
+    backdrop-filter: unset;
+    gap: 4.5em;
+  }
+  .main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+  .main__hero {
+    margin-top: 0;
+    justify-self: end;
+  }
+}
+@media screen and (min-width: 85.37rem) {
+  .main {
+    margin-top: 5em;
+    grid-template-columns: 40% 1fr;
+  }
+}
+
+.menu--item:focus-visible,
+.cta:focus-visible,
+.footer--attribution:focus-visible {
+  color: var(--clr-yellow);
+  outline: 2.8px dotted currentColor;
+  outline-offset: 4px;
+}
+
+@media (hover:hover) {
+  .menu--item::after {
+    width: 100%;
+    height: 2px;
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    background-color: currentColor;
+    transform: scale(0);
+    transition: transform .3s ease-in-out;
+  }
+  .menu--item:hover {
+    color: var(--clr-yellow);
+  }
+  .menu--item:hover::after {
+    transform: scale(1);
+  }
+
+  .cta:hover {
+    color: var(--clr-yellow);
+  }
+  .cta::after {
+    content: '';
+    width: 75%;
+    height: 2px;
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    background-color: var(--clr-yellow);
+    transition: transform .3s ease-in-out;
+    transform: scale(0);
+  }
+  .cta:hover::after {
+    transform: scale(1);
+  }
+  .footer--attribution:hover {
+    color: var(--clr-yellow);
+  }
+  .footer--attribution:hover::after {
+    transform: scale(0)
+  }
+}
